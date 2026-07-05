@@ -12,10 +12,3 @@ public:
     ~TabManager();
 };
 
-TabManager::TabManager()
-{
-}
-
-TabManager::~TabManager()
-{
-}

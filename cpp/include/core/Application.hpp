@@ -19,13 +19,5 @@ public:
 
 };
 
-Application::Application()
-    : m_Running(true)
-{
-}
-
-Application::~Application()
-{
-}
 
 
