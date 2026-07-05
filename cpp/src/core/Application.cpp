@@ -1,13 +1,6 @@
 #include "Application.hpp"
 #include "TabManager.hpp"
 
-int main()
-{
-    Application app;
-
-    app.Run();
-
-}
 
 void Application::Run()
 {
