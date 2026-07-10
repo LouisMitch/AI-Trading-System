@@ -13,4 +13,8 @@ add_executable(TradingBot ${SOURCES})
 
 target_include_directories(TradingBot PRIVATE
     cpp/include
+    cpp/include/core
+    cpp/include/Logging
+    cpp/include/AI
+    cpp/include/Tabs
 )
