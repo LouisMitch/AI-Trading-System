@@ -15,5 +15,5 @@ add_executable(AITradingSystem
 )
 
 target_include_directories(AITradingSystem PRIVATE 
-cpp/include
+    cpp/include
 )
