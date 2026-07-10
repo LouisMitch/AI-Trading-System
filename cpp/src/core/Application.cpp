@@ -1,10 +1,10 @@
-#include "Application.hpp"
-#include "TabManager.hpp"
+#include "core/Application.hpp"
+#include "core/TabManager.hpp"
 #include <iostream>
 
 
 Application::Application()
-    : m_Running(true)
+    : m_Running(false)
 {
 }
 
@@ -17,9 +17,11 @@ void Application::Run()
 
     Initialise();
 
+
     while (m_Running)
     {
         Update();
+
     }
     
     Shutdown();
@@ -27,18 +29,20 @@ void Application::Run()
 
 void Application::Update()
 {
-    std::cout << "UpdateRunning\n";
+    std::cout << "Update: " << m_UpdateCount << "\n";
 
-    for (int i = 0; i < 5; i++)
+    ++m_UpdateCount;
+
+    if (m_UpdateCount >= 6)
     {
-    std::cout << i << "\n";
+        m_Running = false;
     }
-    m_Running = false;
 }
 
 void Application::Initialise()
 {
     std::cout << "Starting Application\n";
+    m_Running = true;
 }
 
 void Application::Shutdown()

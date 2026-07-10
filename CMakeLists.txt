@@ -1,20 +1,19 @@
 cmake_minimum_required(VERSION 3.20)
 
-project(TradingBot)
+project(AITradingSystem LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
 
-file(GLOB_RECURSE SOURCES
-    "cpp/src/*.cpp"
+
+add_executable(AITradingSystem
+    cpp/src/main.cpp
+    cpp/src/core/Application.cpp
+    cpp/src/core/TabManager.cpp
+    cpp/src/logging/Logger.cpp
 )
 
-add_executable(TradingBot ${SOURCES})
-
-target_include_directories(TradingBot PRIVATE
-    cpp/include
-    cpp/include/core
-    cpp/include/Logging
-    cpp/include/AI
-    cpp/include/Tabs
+target_include_directories(AITradingSystem PRIVATE 
+cpp/include
 )

@@ -8,6 +8,7 @@ private:
     void Initialise();
     bool m_Running;
     void Shutdown();
+    int m_UpdateCount = 0;
     
 
 
