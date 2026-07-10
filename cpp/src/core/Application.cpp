@@ -47,5 +47,6 @@ void Application::Initialise()
 
 void Application::Shutdown()
 {
-    std::cout << "Shutting Down\n";
+    std::cout << "Shutting Down good byw\n";
+
 }
