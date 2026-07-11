@@ -23,12 +23,20 @@ public:
 class Tab
 {
 private:
+
     std::unique_ptr<TabMode> m_Mode;
 
+    const uint64_t m_TabId;
+
 public:
-    Tab() = default;
+
+    Tab(uint64_t id);
     void Update();
     void SetMode(TabModeType mode);
     void Shutdown();
+    uint64_t GetID() const
+    {
+        return m_TabId;
+    }
 };
 

@@ -18,37 +18,73 @@ void TabManager::Shutdown()
     for (std::unique_ptr<Tab>& tab : m_Tabs)
     {
         tab->Shutdown();
+        DeleteTab(tab->GetID());
     }
 
     m_Tabs.clear();
 }
 
-Tab& TabManager::CreateTab()
+uint64_t TabManager::CreateTab()
 {
-    m_Tabs.push_back(std::make_unique<Tab>());
-        return *m_Tabs.back();
+    uint64_t id = m_NextTabID;
+    m_Tabs.push_back(std::make_unique<Tab>(id));
+    ++m_NextTabID;
+
+    return id;
 }
 
-void TabManager::DeleteTab(Tab& tab)
+void TabManager::DeleteTab(uint64_t tabId)
 {
-    auto it = std::find_if(
-        m_Tabs.begin(),
-        m_Tabs.end(),
-        [&tab](const std::unique_ptr<Tab>& currentTab)
-        {
-            return currentTab.get() == &tab;
-        }
-    );
+    Tab* tab = GetTab(tabId);
 
-    if (it != m_Tabs.end())
+    if (tab != nullptr)
     {
-        (*it)->Shutdown();
+        tab->Shutdown();
+        
+        std::vector<std::unique_ptr<Tab>>::iterator it = std::find_if(
+            m_Tabs.begin(),
+            m_Tabs.end(),
+            [tab](const std::unique_ptr<Tab>& storedTab)
+        
+        {
+            return storedTab.get() == tab;
+        }
+        );
+
         m_Tabs.erase(it);
-        std::cout << "Tab deleted\n";
+    }
+
+    else
+    {
+        std::cout << "tab dosent exist\n";
     }
 }
 
-void TabManager::GetTab(Tab& tab)
-{
 
+
+const Tab* TabManager::GetTab(uint64_t tabId) const
+{
+    for (const std::unique_ptr<Tab>& tab : m_Tabs)
+    {
+        if (tab->GetID() == tabId)
+        {
+            return tab.get();
+        }
+    }
+
+    std::cout << "tab dosent exist\n";
+    return nullptr;
+}
+
+Tab* TabManager::GetTab(uint64_t tabId)
+{
+    for (std::unique_ptr<Tab>& tab : m_Tabs)
+    {
+        if (tab->GetID() == tabId)
+        {
+            return tab.get();
+        }
+    }
+
+    return nullptr;
 }
