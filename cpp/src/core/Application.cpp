@@ -35,7 +35,6 @@ void Application::Update()
 
     if (m_UpdateCount >= 6)
     {
-        m_TabManager.Shutdown();
         m_Running = false;
     }
 }

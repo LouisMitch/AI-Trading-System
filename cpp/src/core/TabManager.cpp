@@ -18,7 +18,6 @@ void TabManager::Shutdown()
     for (std::unique_ptr<Tab>& tab : m_Tabs)
     {
         tab->Shutdown();
-        DeleteTab(tab->GetID());
     }
 
     m_Tabs.clear();
