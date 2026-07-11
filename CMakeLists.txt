@@ -12,6 +12,7 @@ add_executable(AITradingSystem
     cpp/src/core/Application.cpp
     cpp/src/core/TabManager.cpp
     cpp/src/logging/Logger.cpp
+    cpp/src/tabs/Tab.cpp
 )
 
 target_include_directories(AITradingSystem PRIVATE 

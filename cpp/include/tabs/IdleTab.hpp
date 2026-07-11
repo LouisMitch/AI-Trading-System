@@ -1,7 +1,7 @@
 #pragma once
 #include "Tab.hpp"
 
-class IdleTab : public Tab
+class IdleTab : public TabMode
 {
 public:
 

@@ -16,15 +16,13 @@ void Application::Run()
 {
 
     Initialise();
-
-
     while (m_Running)
     {
         Update();
-
     }
     
     Shutdown();
+
 }
 
 void Application::Update()
@@ -33,8 +31,11 @@ void Application::Update()
 
     ++m_UpdateCount;
 
+    m_TabManager.Update();
+
     if (m_UpdateCount >= 6)
     {
+        m_TabManager.Shutdown();
         m_Running = false;
     }
 }
@@ -43,10 +44,17 @@ void Application::Initialise()
 {
     std::cout << "Starting Application\n";
     m_Running = true;
+
+    Tab& testOfShutdown = m_TabManager.CreateTab();
+    Tab& testOfDel= m_TabManager.CreateTab();
+
+    m_TabManager.DeleteTab(testOfDel);
+
+
 }
 
 void Application::Shutdown()
 {
-    std::cout << "Shutting Down good byw\n";
+    std::cout << "Shutting Down \n";
 
 }
