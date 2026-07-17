@@ -45,6 +45,7 @@ public:
     void SetMode(TabModeType mode);
     void Shutdown();
     const TabModeType GetMode();
+    
     uint64_t GetID() const
     {
         return m_TabId;

@@ -6,7 +6,7 @@ Tab::Tab(uint64_t id)
     : m_TabId(id)
 {
     SetMode(TabModeType::Idle);
-    SetState(TabState::Paused);
+    SetState(TabState::Running);
 }
 
 void Tab::Update()
@@ -24,7 +24,6 @@ void  Tab::Shutdown()
 
 void Tab::SetMode(TabModeType mode)
 {
-
     if (mode == m_CurMode)
     {
         return;
@@ -65,7 +64,6 @@ void Tab::SetMode(TabModeType mode)
     m_Mode = std::move(newMode);
     m_CurMode = mode;
     m_Mode->Startup();
-
 }
 
 void Tab::SetState(TabState state)
