@@ -50,7 +50,14 @@ void TabManager::DeleteTab(uint64_t tabId)
         }
         );
 
-        m_Tabs.erase(it);
+        if (it != m_Tabs.end())
+        {
+            m_Tabs.erase(it);
+        }
+        else
+        {
+            std::cout << "tab dosent exist\n";
+        }
     }
 
     else

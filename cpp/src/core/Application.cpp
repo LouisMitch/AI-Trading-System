@@ -30,9 +30,9 @@ void Application::Update()
     std::cout << "Update: " << m_UpdateCount << "\n";
 
     ++m_UpdateCount;
-    m_TabManager.CreateTab();
-    m_TabManager.Update();
 
+    m_TabManager.Update();
+    
     if (m_UpdateCount >= 6)
     {
         m_Running = false;
@@ -43,7 +43,7 @@ void Application::Initialise()
 {
     std::cout << "Starting Application\n";
     m_Running = true;
-    uint64_t IdTest = m_TabManager.CreateTab();
+    m_TabManager.CreateTab();
 }
 
 void Application::Shutdown()

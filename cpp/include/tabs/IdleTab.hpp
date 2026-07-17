@@ -8,6 +8,11 @@ public:
     IdleTab();
     void Shutdown() override;
     void Update() override;
+    void Startup() override;
+
+private:
+
+
 
 };
 
